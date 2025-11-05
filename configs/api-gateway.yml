@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway  # ← NOMBRE DE ESTE SERVICIO
+  cloud:
+    gateway:
+      routes:
+        # USUARIOS - Gestión de usuarios y auth
+        - id: usuarios-service
+          uri: lb://usuarios-service  # ← NOMBRE DEL MS USUARIOS
+          predicates:
+            - Path=/api/usuarios/**   # ← RUTA PÚBLICA
+          filters:
+            - StripPrefix=1           # ← QUITA /api DEL PATH
+
+        # INVENTARIO - Productos y stock  
+        - id: inventario-service
+          uri: lb://inventario-service  # ← NOMBRE DEL MS INVENTARIO
+          predicates:
+            - Path=/api/inventario/**   # ← RUTA PÚBLICA
+          filters:
+            - StripPrefix=1
+
+        # VENTAS - Pedidos y facturación
+        - id: ventas-service
+          uri: lb://ventas-service      # ← NOMBRE DEL MS VENTAS
+          predicates:
+            - Path=/api/ventas/**       # ← RUTA PÚBLICA  
+          filters:
+            - StripPrefix=1
+
+        # REPORTES - Métricas y dashboards
+        - id: reportes-service
+          uri: lb://microservice-reportes  # ← NOMBRE DEL MS REPORTES
+          predicates:
+            - Path=/api/reportes/**     # ← RUTA PÚBLICA
+          filters:
+            - StripPrefix=1
+
+        # NOTIFICACIONES - Notificaciones ante cambios o indicadores
+        - id: notificaciones-service
+          uri: lb://microservice-notificaciones  # ← NOMBRE DEL MS NOTIFICACIONES
+          predicates:
+            - Path=/api/notificaciones/**     # ← RUTA PÚBLICA
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
