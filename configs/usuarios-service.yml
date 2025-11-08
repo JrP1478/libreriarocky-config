@@ -9,10 +9,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          secret-value: ${jwt.secret}
 
 jwt:
   secret: libreria-rocky-jwt-key-para-microservicios-usuarios-2025
-  expiration: 86400000
+  expiration: 86400000 # 24 horas en milisegundos
 
 management:
   endpoints:
