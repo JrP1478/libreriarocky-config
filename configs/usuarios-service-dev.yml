@@ -1,0 +1,31 @@
+spring:
+  profiles: dev
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: INFO
+
+    # Tu paquete base
+    com.libreriarocky.app.usuarios: DEBUG
+
+    # Spring
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+
+    # Hibernate/JPA
+    org.hibernate: WARN
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+
+    # RabbitMQ
+    org.springframework.amqp: DEBUG
+    com.rabbitmq: INFO
+
+    # Eureka
+    com.netflix.eureka: INFO
+    com.netflix.discovery: INFO
