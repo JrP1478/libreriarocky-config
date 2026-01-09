@@ -1,19 +1,18 @@
 # Configuración compartida por todos los microservicios
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${RABBIT_USER}
+    password: ${RABBIT_PASS}
 
 logging:
   level:
-    com.libreriarocky: DEBUG
+    com.libreriarocky: INFO
     org.springframework.cloud: INFO
