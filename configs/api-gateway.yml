@@ -3,47 +3,49 @@ server:
 
 spring:
   application:
-    name: api-gateway  # ← NOMBRE DE ESTE SERVICIO
+    name: api-gateway
+
   cloud:
     gateway:
       routes:
-        # USUARIOS - Gestión de usuarios y auth
+
+        # USUARIOS (LOGIN / REGISTRO)
         - id: usuarios-service
-          uri: lb://usuarios-service  # ← NOMBRE DEL MS USUARIOS
+          uri: lb://usuarios-service
           predicates:
-            - Path=/api/usuarios/**   # ← RUTA PÚBLICA
+            - Path=/api/usuarios/**
           filters:
-            - StripPrefix=1           # ← QUITA /api DEL PATH
+            - StripPrefix=1
 
-        # INVENTARIO - Productos y stock  
+        # INVENTARIO (PROTEGIDO)
         - id: inventario-service
-          uri: lb://inventario-service  # ← NOMBRE DEL MS INVENTARIO
+          uri: lb://inventario-service
           predicates:
-            - Path=/api/inventario/**   # ← RUTA PÚBLICA
+            - Path=/api/inventario/**
           filters:
             - StripPrefix=1
 
-        # VENTAS - Pedidos y facturación
+        # VENTAS (PROTEGIDO)
         - id: ventas-service
-          uri: lb://ventas-service      # ← NOMBRE DEL MS VENTAS
+          uri: lb://ventas-service
           predicates:
-            - Path=/api/ventas/**       # ← RUTA PÚBLICA  
+            - Path=/api/ventas/**
           filters:
             - StripPrefix=1
 
-        # REPORTES - Métricas y dashboards
+        # REPORTES (PROTEGIDO)
         - id: reportes-service
-          uri: lb://microservice-reportes  # ← NOMBRE DEL MS REPORTES
+          uri: lb://reportes-service
           predicates:
-            - Path=/api/reportes/**     # ← RUTA PÚBLICA
+            - Path=/api/reportes/**
           filters:
             - StripPrefix=1
 
-        # NOTIFICACIONES - Notificaciones ante cambios o indicadores
+        # NOTIFICACIONES (PROTEGIDO)
         - id: notificaciones-service
-          uri: lb://microservice-notificaciones  # ← NOMBRE DEL MS NOTIFICACIONES
+          uri: lb://notificaciones-service
           predicates:
-            - Path=/api/notificaciones/**     # ← RUTA PÚBLICA
+            - Path=/api/notificaciones/**
           filters:
             - StripPrefix=1
 
