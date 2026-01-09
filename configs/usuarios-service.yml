@@ -1,23 +1,24 @@
-server:
-  port: 8081
-
 spring:
+  application:
+    name: usuarios-service
+
   datasource:
     url: jdbc:postgresql://localhost:5432/BD_Rocky_Usuarios
-    username: postgres
-    password: 123456
+    username: ${DB_USER}
+    password: ${DB_PASS}
+
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
+
   security:
     oauth2:
       resourceserver:
         jwt:
-          secret-value: ${jwt.secret}
+          secret-value: ${JWT_SECRET}
 
-jwt:
-  secret: libreria-rocky-jwt-key-para-microservicios-usuarios-2025
-  expiration: 86400000 # 24 horas en milisegundos
+server:
+  port: 0
 
 management:
   endpoints:
