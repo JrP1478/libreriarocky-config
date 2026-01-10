@@ -12,12 +12,6 @@ spring:
     username: ${RABBIT_USER}
     password: ${RABBIT_PASS}
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          secret-key: ${JWT_SECRET}
-
 logging:
   level:
     com.libreriarocky: INFO
