@@ -48,6 +48,12 @@ spring:
             - Path=/api/notificaciones/**
           filters:
             - StripPrefix=1
+  spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          secret-key: ${JWT_SECRET}  # Puedes definir JWT_SECRET en variables de entorno
 
 eureka:
   client:
