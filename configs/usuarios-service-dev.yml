@@ -10,3 +10,12 @@ spring:
 logging:
   level:
     com.libreriarocky.app.usuarios: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
