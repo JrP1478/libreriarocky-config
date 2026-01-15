@@ -16,8 +16,6 @@ spring:
             - Path=/api/usuarios/**
           filters:
             - StripPrefix=1
-            - name: JwtAuthenticationFilter
-            - name: AuthorizationFilter
 
         # INVENTARIO (PROTEGIDO)
         - id: inventario-service
