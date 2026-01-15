@@ -48,7 +48,7 @@ spring:
             - Path=/api/notificaciones/**
           filters:
             - StripPrefix=1
-  spring:
+  
   security:
     oauth2:
       resourceserver:
@@ -59,6 +59,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    health:
+      show-details: always
 
 logging:
   level:
