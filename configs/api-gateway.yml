@@ -15,7 +15,7 @@ spring:
           predicates:
             - Path=/api/usuarios/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
         # INVENTARIO (PROTEGIDO)
         - id: inventario-service
