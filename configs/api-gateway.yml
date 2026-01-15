@@ -53,7 +53,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          secret-key: ${JWT_SECRET}  # Puedes definir JWT_SECRET en variables de entorno
+          secret: ${JWT_SECRET}  # Puedes definir JWT_SECRET en variables de entorno
 
 eureka:
   client:
