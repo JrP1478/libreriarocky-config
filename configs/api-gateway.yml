@@ -16,6 +16,8 @@ spring:
             - Path=/api/usuarios/**
           filters:
             - StripPrefix=1
+            - name: JwtAuthenticationFilter
+            - name: AuthorizationFilter
 
         # INVENTARIO (PROTEGIDO)
         - id: inventario-service
@@ -24,6 +26,8 @@ spring:
             - Path=/api/inventario/**
           filters:
             - StripPrefix=1
+            - name: JwtAuthenticationFilter
+            - name: AuthorizationFilter
 
         # VENTAS (PROTEGIDO)
         - id: ventas-service
@@ -32,6 +36,8 @@ spring:
             - Path=/api/ventas/**
           filters:
             - StripPrefix=1
+            - name: JwtAuthenticationFilter
+            - name: AuthorizationFilter
 
         # REPORTES (PROTEGIDO)
         - id: reportes-service
