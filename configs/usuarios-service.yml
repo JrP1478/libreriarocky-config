@@ -15,7 +15,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          secret-value: ${JWT_SECRET}
+          secret: ${JWT_SECRET}
+          expiration: 3600000
 
 server:
   port: 0
