@@ -32,3 +32,8 @@ management:
 logging:
   level:
     org.springframework.amqp: DEBUG
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
