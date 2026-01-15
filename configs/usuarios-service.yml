@@ -11,12 +11,9 @@ spring:
     hibernate:
       ddl-auto: validate
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          secret: ${JWT_SECRET}
-          expiration: 3600000
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600000
 
 server:
   port: 0
