@@ -11,7 +11,7 @@ spring:
 
         # USUARIOS (LOGIN / REGISTRO)
         - id: usuarios-service
-          uri: lb://usuarios-service
+          uri: http://192.168.1.38:8081
           predicates:
             - Path=/api/usuarios/**
           filters:
