@@ -5,8 +5,8 @@ services:
     image: postgres:15-alpine
     container_name: usuarios-postgres
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
     ports:
       - "5432:5432"
 
@@ -14,14 +14,14 @@ services:
     image: rabbitmq:3-management-alpine
     container_name: usuarios-rabbit
     environment:
-      RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASS}
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
     ports:
       - "5672:5672"
       - "15672:15672"
 
   eureka-server:
-    image: eurekaserver:latest  # si ya tienes la imagen de Eureka
+    image: eurekaserver:latest
     container_name: eureka-server
     ports:
       - "8761:8761"
@@ -30,15 +30,16 @@ services:
     build: .
     container_name: usuarios-service
     environment:
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASS}
-      JWT_SECRET: ${JWT_SECRET}
-      RABBIT_USER: ${RABBIT_USER}
-      RABBIT_PASS: ${RABBIT_PASS}
-      CONFIG_GIT_URI: ${CONFIG_GIT_URI}
-      CONFIG_SERVER_USER: ${CONFIG_SERVER_USER}
-      CONFIG_SERVER_PASSWORD: ${CONFIG_SERVER_PASSWORD}
+      DB_USER: postgres
+      DB_PASS: 123456
+      JWT_SECRET: libreria-rocky-jwt-key-para-microservicios-usuarios-2025
+      RABBIT_USER: admin
+      RABBIT_PASS: password
+      CONFIG_GIT_URI: https://github.com/JrP1478/libreriarocky-config.git
+      CONFIG_SERVER_USER: configuser
+      CONFIG_SERVER_PASSWORD: config123
       EUREKA_HOST: eureka-server
+      SERVER_PORT: 8081
     ports:
       - "8081:8081"
     depends_on:
