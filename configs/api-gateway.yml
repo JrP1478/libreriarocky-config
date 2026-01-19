@@ -9,6 +9,14 @@ spring:
     gateway:
       routes:
 
+        # PRIMERO: Usuarios (sin autenticación para login/register)
+        - id: usuarios-service
+          uri: http://192.168.1.38:8081
+          predicates:
+            - Path=/api/usuarios/**, /api/clientes/**, /api/proveedores/**
+          filters:
+            - StripPrefix=1
+            
         # INVENTARIO (PROTEGIDO)
         - id: inventario-service
           uri: lb://inventario-service
@@ -48,14 +56,6 @@ spring:
             - StripPrefix=1
             - name: JwtAuthenticationFilter
             - name: AuthorizationFilter
-
-        # ÚLTIMO: Ruta genérica para el servicio de usuarios (con TODOS sus endpoints)
-        - id: usuarios-service
-          uri: http://192.168.1.38:8081
-          predicates:
-            - Path=/api/**
-          filters:
-            - StripPrefix=1
   
   security:
     oauth2:
