@@ -25,11 +25,11 @@ spring:
           filters:
             - StripPrefix=1
 
-        # VENTAS (PROTEGIDO)
+        # VENTAS
         - id: ventas-service
-          uri: lb://ventas-service
+          uri: http://192.168.1.38:8083
           predicates:
-            - Path=/api/ventas/**
+            - Path=/api/venta/**,/cotizacion/**,/pago/**,/ventas_di/**,/ventas_dp/**
           filters:
             - StripPrefix=1
           
