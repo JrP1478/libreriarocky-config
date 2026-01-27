@@ -1,9 +1,21 @@
+server:
+  port: 8084
+
 spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
 
 logging:
   level:
     com.libreriarocky.app.reportes: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
