@@ -71,7 +71,18 @@ management:
 
 logging:
   level:
+    # Para ver el routing
     org.springframework.cloud.gateway: TRACE
-    org.springframework.web.reactive: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: DEBUG
+    
+    # Para ver las peticiones HTTP
     reactor.netty.http.client: DEBUG
-    org.springframework.web: DEBUG
+    org.springframework.web.reactive: DEBUG
+    
+    # Para ver filtros y predicados
+    org.springframework.cloud.gateway.filter: DEBUG
+    org.springframework.cloud.gateway.handler: DEBUG
+    
+    # Para ver errores
+    org.springframework.boot.autoconfigure.web.reactive.error: DEBUG
+    org.springframework.web.server: DEBUG
