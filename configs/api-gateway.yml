@@ -13,9 +13,7 @@ spring:
         - id: usuarios-service
           uri: http://192.168.1.38:8081
           predicates:
-            - Path=/api/usuarios/**
-            - Path=/api/clientes/**
-            - Path=/api/proveedores/**
+            - Path=/api/usuarios/**, /api/clientes/**, /api/proveedores/**
           filters:
             - StripPrefix=1
             
