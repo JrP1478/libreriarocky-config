@@ -7,6 +7,12 @@ spring:
     username: ${DB_USER}
     password: ${DB_PASS}
 
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - vEthernet.*  
+
   jpa:
     hibernate:
       ddl-auto: validate
