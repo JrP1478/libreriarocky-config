@@ -36,6 +36,6 @@ logging:
     
 eureka:
   instance:
-    prefer-ip-address: true
-    ip-address: 127.0.0.1
+    hostname: localhost
+    prefer-ip-address: false
     instance-id: ${spring.application.name}:${server.port}
