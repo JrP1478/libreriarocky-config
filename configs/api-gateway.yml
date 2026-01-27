@@ -29,7 +29,7 @@ spring:
         - id: ventas-service
           uri: http://192.168.1.38:8083
           predicates:
-            - Path=/api/venta/**,/cotizacion/**,/pago/**,/ventas_di/**,/ventas_dp/**
+            - Path=/api/venta/**,/api/cotizacion/**,/api/pago/**,/api/ventas_di/**,/api/ventas_dp/**
           filters:
             - StripPrefix=1
           
