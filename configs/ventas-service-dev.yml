@@ -9,7 +9,7 @@ spring:
 
 logging:
   level:
-    com.libreriarocky.app.usuarios: DEBUG
+    com.libreriarocky.app.ventas: DEBUG
 
 management:
   endpoints:
