@@ -13,7 +13,9 @@ spring:
         - id: usuarios-service
           uri: http://192.168.1.38:8081
           predicates:
-            - Path=/api/usuarios/**, /api/clientes/**, /api/proveedores/**
+            - Path=/api/usuarios/**
+            - Path=/api/clientes/**
+            - Path=/api/proveedores/**
           filters:
             - StripPrefix=1
             
@@ -21,7 +23,14 @@ spring:
         - id: inventario-service
           uri: http://192.168.1.38:8082
           predicates:
-            - Path=/api/inventario/**, /api/ingresos/**, /api/ingreso-detalle/item/**, /api/ingreso-detalle/producto/**, /api/salidas/**, /api/categorias/**, /api/marcas/**, /api/productos/** 
+            - Path=/api/inventario/**
+            - Path=/api/ingresos/**
+            - Path=/api/ingreso-detalle/item/**
+            - Path=/api/ingreso-detalle/producto/**
+            - Path=/api/salidas/**
+            - Path=/api/categorias/**
+            - Path=/api/marcas/**
+            - Path=/api/productos/**
           filters:
             - StripPrefix=1
 
