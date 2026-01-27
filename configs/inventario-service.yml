@@ -16,7 +16,10 @@ spring:
     port: 5672
     username: ${RABBIT_USER}
     password: ${RABBIT_PASS}
-  
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600000
 
 server:
   port: 0
@@ -27,6 +30,10 @@ management:
       exposure:
         include: health,info,metrics
 
+logging:
+  level:
+    org.springframework.amqp: DEBUG
+    
 eureka:
   instance:
     prefer-ip-address: true
