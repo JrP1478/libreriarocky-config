@@ -17,11 +17,11 @@ spring:
           filters:
             - StripPrefix=1
             
-        # INVENTARIO (PROTEGIDO)
+        # INVENTARIO
         - id: inventario-service
-          uri: lb://inventario-service
+          uri: http://192.168.1.38:8082
           predicates:
-            - Path=/api/inventario/**
+            - Path=/api/inventario/**, /api/ingresos/**, /api/ingreso-detalle/item/**, /api/ingreso-detalle/producto/**, /api/salidas/**, /api/categorias/**, /api/marcas/**, /api/productos/** 
           filters:
             - StripPrefix=1
 
