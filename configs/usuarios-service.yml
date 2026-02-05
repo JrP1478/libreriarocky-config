@@ -12,7 +12,7 @@ spring:
       ddl-auto: validate
 
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     username: ${RABBIT_USER}
     password: ${RABBIT_PASS}
